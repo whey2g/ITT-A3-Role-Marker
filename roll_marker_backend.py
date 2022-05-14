@@ -1,27 +1,48 @@
 #A child class of the python standard Exception class that will parent exception classes for each attribute
-#of the Student class. Using the name StudentError as each exception will be related to
-#attributes in the Student class and it is good practice to use Error as the final in word in a
+#of the Person class. Using the name PersonError as each exception will be related to
+#attributes in the Person class and it is good practice to use Error as the final in word in a
 #CamelCase class name.
-class StudentError(Exception):
+class PersonError(Exception):
     pass
 
 #A child class of the python standard Exception class that will parent exception classes for each attribute
-#of the Teacher class. Using the name TeacherError as each exception will be related to
-#attributes in the Teacher class and it is good practice to use Error as the final in word in a
+#of the Classroom class. Using the name ClassroomError as each exception will be related to
+#attributes in the Classroom class and it is good practice to use Error as the final in word in a
 #CamelCase class name.
-class TeacherError(Exception):
+class ClassroomError(Exception):
     pass
 
 #A component class that defines the Student object. Using the name Student as it is a good
 #descriptor of the object.
-class Student():
+class Person():
     #
     def__init__(self):
     pass
 
-#A component class that defines the Teacher object. Using the name Teacher as it is a good
+#A child component class of the Person class that defines the Student object. Using the name
+#Student as it is a good descriptor of the object.
+class Student(Person):
+    #
+    def__init__(self):
+    pass
+
+#A child component class of the Person class that defines the Teacher object. Using the name
+#Teacher as it is a good descriptor of the object.
+class Teacher(Person):
+    #
+    def__init__(self):
+    pass
+
+#A child component class of the Person class that defines the EmergencyContact object. Using the name
+#EmergencyContact as it is a good descriptor of the object.
+class EmergencyContact(Person):
+    #
+    def__init__(self):
+    pass
+
+#A component class that defines the Classroom object. Using the name Classroom as it is a good
 #descriptor of the object.
-class Teacher():
+class Classroom():
     #
     def__init__(self):
     pass
