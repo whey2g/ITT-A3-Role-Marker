@@ -1,0 +1,21 @@
+Student ID,Student First Name,Student Last Name,Student Gender,Student Phone,Student Comments,Student Status,Attendance Count,Attendance Rate,Teacher ID,Teacher Title,Teacher First Name,Teacher Last Name,Teacher Phone,E Contact ID,E Contact First Name,E Contact Last Name,E Contact Phone,E Contact Comments,E Contact Relationship,Classroom Name,Classroom Status,Classroom Date,Classroom Day
+10011,Kiran,Acharya,Male,0400 000 009,,Present,2,100,50001,Mr,Jack,James,0400 100 000,20011,Alysia,Acharya,0401 000 009,,Mother,1st Grade,Attendance Completed,1/02/2022,2
+10020,Heena,Avalos,X,0400 000 002,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20020,Fenella,Avalos,0401 000 002,"Leave voicemail, will call back.",Mother,2nd Grade,Attendance Completed,1/02/2022,2
+10010,Romario,Costa,Male,0400 000 013,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20010,Leonie,Costa,0401 000 013,,Mother,2nd Grade,Attendance Completed,1/02/2022,2
+10016,John,Davidson,Male,0400 000 006,,Present,2,100,50001,Mr,Jack,James,0400 100 000,20016,Bertie,Davidson,0401 000 006,SMS Only.,Father,1st Grade,Attendance Completed,1/02/2022,2
+10013,John,Doe,Male,0400 000 005,,Present,2,100,50001,Mr,Jack,James,0400 100 000,20013,Evie,Doe,0401 000 005,,Mother,1st Grade,Attendance Completed,1/02/2022,2
+10008,Arian,Eastwood,Male,0400 000 000,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20008,Danyaal,Sloan,0401 000 000,,Father,2nd Grade,Attendance Completed,1/02/2022,2
+10007,Nazifa,Harrell,Female,0400 000 010,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20007,Kaison,Harrell,0401 000 010,,Father,2nd Grade,Attendance Completed,1/02/2022,2
+10005,Franklin,Head,Male,0400 000 001,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20005,Mohammod,Head,0401 000 001,,Father,2nd Grade,Attendance Completed,1/02/2022,2
+10012,Sandeep,Hegde,Female,0400 000 014,,Present,2,100,50001,Mr,Jack,James,0400 100 000,20012,Tamara,Hegde,0401 000 014,,Mother,1st Grade,Attendance Completed,1/02/2022,2
+10003,Rochelle,Hooper,Female,0400 000 012,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20003,Harriett,Hooper,0401 000 012,,Mother,2nd Grade,Attendance Completed,1/02/2022,2
+10004,Jethro,Horner,Male,0400 000 004,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20004,Keiren,Horner,0401 000 004,,Father,2nd Grade,Attendance Completed,1/02/2022,2
+10019,Shivam,Houston,Female,0400 000 015,,Present,2,100,50001,Mr,Jack,James,0400 100 000,20019,Mollie,Houston,0401 000 015,,Mother,1st Grade,Attendance Completed,1/02/2022,2
+10017,Jessica,James,Female,0400 000 003,,Present,2,100,50001,Mr,Jack,James,0400 100 000,20017,Sapphire,James,0401 000 003,"Leave voicemail, will call back.",Mother,1st Grade,Attendance Completed,1/02/2022,2
+10018,Pollyanna,Leonard,Female,0400 000 011,,Present,2,100,50001,Mr,Jack,James,0400 100 000,20018,Lilli-Mai,Chen,0401 000 011,,Mother,1st Grade,Attendance Completed,1/02/2022,2
+10006,Vienna,Macgregor,Female,0400 000 018,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20006,Ihsan,Macgregor,0401 000 018,SMS Only.,Father,2nd Grade,Attendance Completed,1/02/2022,2
+10001,Shuaib,Rudd,X,0400 000 016,,Present,2,100,50001,Mr,Jack,James,0400 100 000,20001,Miles,Rudd,0401 000 016,,Father,1st Grade,Attendance Completed,1/02/2022,2
+10014,Vishwanath,Singh,Male,0400 000 019,,Present,1,50,50001,Mr,Jack,James,0400 100 000,20014,Harmony,Singh,0401 000 019,,Mother,1st Grade,Attendance Completed,1/02/2022,2
+10009,Sukhmani,Stephens,Female,0400 000 017,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20009,Cieran,Stephens,0401 000 017,,Mother,2nd Grade,Attendance Completed,1/02/2022,2
+10002,Kelise,Sutherland,Female,0400 000 008,,Present,2,100,50002,Mrs,Betty,Baker,0400 100 001,20002,Nafisa,Sutherland,0401 000 008,,Mother,2nd Grade,Attendance Completed,1/02/2022,2
+10015,Josh,Taylor,Male,0400 000 007,,Present,2,100,50001,Mr,Jack,James,0400 100 000,20015,Jordi,Taylor,0401 000 007,,Father,1st Grade,Attendance Completed,1/02/2022,2
