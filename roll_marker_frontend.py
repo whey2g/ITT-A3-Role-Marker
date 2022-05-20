@@ -1,4 +1,5 @@
 import sys
+import datetime
 import roll_marker_backend
 
 #A class that runs the roll marker program, writing and displaying menus, calling and
@@ -28,7 +29,7 @@ class RollMarkerUI():
                 self.display_classroom_list_via_menu()
             elif choice=="f":
                 self.find_student_via_menu()
-                choice=self.get_menu_choice()
+            choice=self.get_menu_choice()
         try:
             self.roll_marker.save_data(data_file_name)
         except Exception as e:
@@ -54,90 +55,126 @@ class RollMarkerUI():
         return choice
 
 
-    #A static method used to reduce code throughout the program that requests user input and returns a
+    #A method used to reduce code throughout the program that requests user input and returns a
     #string. Using the name get_string as it is a suitable verb followed by the description of the method
     #of getting a string data type.
-    @staticmethod
-    def get_string(prompt:str)->str:
+    def get_string(self,prompt):
         """Takes user input and returns a string.
         """
         sys.stdout.write(prompt)
+        sys.stdout.flush()
         #A variable to capture user input. Using the name input_string as it is a suitable verb followed by
         #a description of what data type is being input.
         input_string = sys.stdin.readline().strip()
+        while(len(input_string)==0):
+            sys.stdout.write("Input cannot be blank. Please try again: ")
+            sys.stdout.flush()
+            value=sys.stdin.readline().strip()
         return input_string
 
-    #A static method used to reduce code throughout the program that requests user input and returns an
-    #integer. Using the name get_integer as it is a suitable verb followed by the description of the
-    #method of getting an integer data type.
-    @staticmethod
-    def get_integer(prompt:str)->int:
-        """Takes user input and returns an integer.
-        """
-        #A variable to capture error message. Using the name error_message as it will deliver an error
-        #message to the user should the user input an invalid entry.
-        error_message = ""
-        #A variable to capture user input. User the name input_integer as it is a suitable verb follwed by
-        #a description of what data type is being input.
-        input_integer = None
-        while(input_integer==None):
-            try:
-                input_integer=int(RollMarkerUI.get_string(error_message+prompt))
-            except:
-                error_message="Invalid entry. Please enter a whole number.\n"
-        return input_integer
-
-    #A static method used to reduce code throughout the program that requests user input and returns a
+    #A method used to reduce code throughout the program that requests user input and returns a
     #float. Using the name get_float as it is a suitable verb followed by the description of the
     #method of getting an float data type.
-    @staticmethod
-    def get_float(prompt:str)->float:
+    def get_float(self,prompt):
         """Takes user input and returns a float.
         """
-        #A variable to capture error message. Using the name error_message as it will deliver an error
-        #message to the user should the user input an invalid entry.
-        error_message = ""
         #A variable to capture user input. User the name input_float as it is a suitable verb followed by
         #a description of what data type is being input.
-        input_float = None
+        input_float=None
         while(input_float==None):
             try:
-                input_float=float(RollMarkerUI.get_string(error_message+prompt))
+                input_float=float(self.get_string(prompt))
             except:
-                error_message="Invalid entry. Please enter a number.\n"
+                prompt="Invalid entry. Please try again: "
         return input_float
 
-    #A static method used to reduce code throughout the program that requests user input and returns a
+    #A method used to reduce code throughout the program that requests user input and returns a
     #positive float. Using the name get_positive_float as it is a suitable verb followed by the description of the
     #method of getting a positive float data type.
-    @staticmethod
-    def get_positive_float(prompt:float)->float:
+    def get_positive_float(self,prompt):
         """Takes user input and returns a positive float.
         """
-        #A variable to capture error message. Using the name error_message as it will deliver an error
-        #message to the user should the user input an invalid entry.
-        error_message = ""
         #A variable to capture user input. User the name input_float as it is a suitable verb follwed by
         #a description of what data type is being input.
-        input_positive_float = RollMarkerUI.get_float(prompt)
+        input_positive_float=self.get_float(prompt)
         while(input_positive_float<0):
-            try:
-                input_positive_float=float(RollMarkerUI.get_float(error_message+prompt))
-            except:
-                error_message="Invalid entry. Please enter a positive number.\n"
+            input_positive_float=self.get_float("Invalid entry. Please enter a positive number: ")
         return input_positive_float
 
     def output_error(self,message):
         sys.stderr.write("Problem! "+message+"\n")
 
-    def add_class_attendance_via_menu():
+    def add_class_attendance_via_menu(self):
         pass
 
-    def display_classroom_list_via_menu():
-        pass
+    def display_classroom_list_via_menu(self):
+        sys.stdout.write("-------------\n")
+        sys.stdout.write("Display Class\n")
+        sys.stdout.write("-------------\n")
+        sys.stdout.write("Enter partial class name to find ie. 1st: ")
+        sys.stdout.flush()
+        search_target=sys.stdin.readline().strip()
 
-    def find_student_via_menu():
-        pass
+        self.search_and_display_matching_classroom(search_target)
+
+    def find_student_via_menu(self):
+        sys.stdout.write("------------\n")
+        sys.stdout.write("Find Student\n")
+        sys.stdout.write("------------\n")
+        sys.stdout.write("Enter partial record name to find: ")
+        sys.stdout.flush()
+        search_target=sys.stdin.readline().strip()
+
+        self.search_and_display_matching_students(search_target)
+
+    def search_and_display_matching_classroom(self,search_target):
+        sys.stdout.write("\n")
+        #A variable to capture a summary of formatted data to be displayed on screen. Using the name
+        #summary as it is providing a summary of the data that can be displayed.
+        summary ="|-----------------------------------------Classroom Summary----------------------------------------|\n"
+        summary+="|Student ID|Name                     |Gender |Phone       |Comments       |Status  |Attendance Rate|\n"
+        sys.stdout.write(summary)
+
+        num_matching_records=0
+        for r in self.roll_marker.get_matching_classroom(search_target):
+            #A variable to capture a rows of matched data to be displayed on screen. Using the name
+            #row_text as it is providing a row of data that can be displayed.
+            row_text="|"
+            row_text+=(str(r.student_id)).ljust(10)+"|"
+            row_text+=(str(r.student_first_name)).ljust(12)+" "+(str(r.student_last_name)).ljust(12)+"|"
+            row_text+=(str(r.student_gender)).ljust(7)+"|"
+            row_text+=(str(r.student_phone)).ljust(12)+"|"
+            row_text+=(str(r.student_comments)).ljust(15)+"|"
+            row_text+=(str(r.student_status)).ljust(8)+"|"
+            row_text+=(str(r.attendance_rate)).ljust(15)+"|"
+            num_matching_records+=1
+            sys.stdout.write(row_text)
+            sys.stdout.write("\n")
+
+    def search_and_display_matching_students(self,search_target):
+        sys.stdout.write("\n")
+        #A variable to capture a summary of formatted data to be displayed on screen. Using the name
+        #summary as it is providing a summary of the data that can be displayed.
+        summary ="|---------------------------------------------------------------Student Summary---------------------------------------------------------------|\n"
+        summary+="|Student ID|Name                     |Attendance Rate|Teacher           |Emergency Contact        |Phone       |Comments       |Relationship  |\n"
+        sys.stdout.write(summary)
+
+        num_matching_records=0
+        for r in self.roll_marker.get_matching_student(search_target):
+            #A variable to capture a rows of matched data to be displayed on screen. Using the name
+            #row_text as it is providing a row of data that can be displayed.
+            row_text="|"
+            row_text+=(str(r.student_id)).ljust(10)+"|"
+            row_text+=(str(r.student_first_name)).ljust(12)+" "+(str(r.student_last_name)).ljust(12)+"|"
+            row_text+=(str(r.attendance_rate)).ljust(15)+"|"
+            row_text+=(str(r.teacher_title)).ljust(5)+" "+(str(r.teacher_last_name)).ljust(12)+"|"
+            row_text+=(str(r.e_contact_first_name)).ljust(12)+" "+(str(r.e_contact_last_name)).ljust(12)+"|"
+            row_text+=(str(r.e_contact_phone)).ljust(12)+"|"
+            row_text+=(str(r.e_contact_comments)).ljust(15)+"|"
+            row_text+=(str(r.e_contact_relationship)).ljust(14)+"|"
+            num_matching_records+=1
+            sys.stdout.write(row_text)
+            sys.stdout.write("\n")
 
 home_roll_marker = RollMarkerUI()
 home_roll_marker.run_roll_marker()

@@ -1,3 +1,5 @@
+import sys
+import datetime
 #A child class of the python standard Exception class that will parent exception classes for each
 #attribute of the AttendanceRecord class. Using the name AttendanceRecord as each exception will be
 #related to attributes in the AttendanceRecord class and it is good practice to use Error as the final
@@ -167,31 +169,31 @@ class AttendanceRecord():
 
     #A constructor method called on creation of the AttendanceRecord class that takes several arguments
     #that relate directly to fields in an external dataset.
-    def __init__(self,__student_id,__student_first_name,__student_last_name,__student_gender,__student_phone,__student_comments,__student_status,__attendance_count,__attendance_rate,__teacher_id,__teacher_title,__teacher_first_name,__teacher_last_name,__teacher_phone,__e_contact_id,__e_contact_first_name,__e_contact_last_name,__e_contact_phone,__e_contact_comments,__e_contact_relationship,__classroom_name,__classroom_status,__classroom_date,__classroom_day):
-        self.__student_id = int(__student_id)
-        self.__student_first_name = str(__student_first_name)
-        self.__student_last_name = str(__student_last_name)
-        self.__student_gender = str(__student_gender)
-        self.__student_phone = str(__student_phone)
-        self.__student_comments = str(__student_comments)
-        self.__student_status = str(__student_status)
-        self.__attendance_count = int(__attendance_count)
-        self.__attendance_rate = float(__attendance_rate)
-        self.__teacher_id = int(__teacher_id)
-        self.__teacher_title = str(__teacher_title)
-        self.__teacher_first_name = str(__teacher_first_name)
-        self.__teacher_last_name = str(__teacher_last_name)
-        self.__teacher_phone = str(__teacher_phone)
-        self.__e_contact_id = int(__e_contact_id)
-        self.__e_contact_first_name = str(__e_contact_first_name)
-        self.__e_contact_last_name = str(__e_contact_last_name)
-        self.__e_contact_phone = str(__e_contact_phone)
-        self.__e_contact_comments = str(__e_contact_comments)
-        self.__e_contact_relationship = str(__e_contact_relationship)
-        self.__classroom_name = str(__classroom_name)
-        self.__classroom_status = str(__classroom_status)
-        self.__classroom_date = str(__classroom_date)
-        self.__classroom_day = int(__classroom_day)
+    def __init__(self,student_id,student_first_name,student_last_name,student_gender,student_phone,student_comments,student_status,attendance_count,attendance_rate,teacher_id,teacher_title,teacher_first_name,teacher_last_name,teacher_phone,e_contact_id,e_contact_first_name,e_contact_last_name,e_contact_phone,e_contact_comments,e_contact_relationship,classroom_name,classroom_status,classroom_date,classroom_day):
+        self.student_id=student_id
+        self.student_first_name=student_first_name
+        self.student_last_name=student_last_name
+        self.student_gender=student_gender
+        self.student_phone=student_phone
+        self.student_comments=student_comments
+        self.student_status=student_status
+        self.attendance_count=attendance_count
+        self.attendance_rate=attendance_rate
+        self.teacher_id=teacher_id
+        self.teacher_title=teacher_title
+        self.teacher_first_name=teacher_first_name
+        self.teacher_last_name=teacher_last_name
+        self.teacher_phone=teacher_phone
+        self.e_contact_id=e_contact_id
+        self.e_contact_first_name=e_contact_first_name
+        self.e_contact_last_name=e_contact_last_name
+        self.e_contact_phone=e_contact_phone
+        self.e_contact_comments=e_contact_comments
+        self.e_contact_relationship=e_contact_relationship
+        self.classroom_name=classroom_name
+        self.classroom_status=classroom_status
+        self.classroom_date=classroom_date
+        self.classroom_day=classroom_day
 
     #A getter accessor method to allow read-only access to the student_id attribute from outside of the AttendanceRecord
     #class.
@@ -202,11 +204,13 @@ class AttendanceRecord():
     #A setter mutator method that will produce an error if a negative value or a string is passed to
     #the student_id attribute.
     @student_id.setter
-    def id(self,value):
-        if (value<0):
-            raise IdError("Value must be a positive integer.")
-        elif (type(value)!=int):
-            raise IdError("Value must be an integer.")
+    def student_id(self,value):
+    #    if (value==None):
+    #        raise IdError("Value cannot be None")
+    #    elif (not isinstance(value,str)):
+    #        raise IdError("Value cannot be string")
+    #    elif (len(value.strip())<=0):
+    #        raise IdError("Value cannt be an empty string")
         self.__student_id=value
 
     #A getter accessor method to allow read-only access to the student_first_name attribute from outside of the
@@ -219,8 +223,8 @@ class AttendanceRecord():
     #student_first_name attribute.
     @student_first_name.setter
     def student_first_name(self,value):
-        if (type(value)!=str):
-            raise FirstNameError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise FirstNameError("Value must be a string.")
         self.__student_first_name=value
 
     #A getter accessor method to allow read-only access to the student_last_name attribute from outside of the
@@ -233,8 +237,8 @@ class AttendanceRecord():
     #student_last_name attribute.
     @student_last_name.setter
     def student_last_name(self,value):
-        if (type(value)!=str):
-            raise LastNameError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise LastNameError("Value must be a string.")
         self.__student_last_name=value
 
     #A getter accessor method to allow read-only access to the student_gender attribute from outside of the
@@ -247,8 +251,8 @@ class AttendanceRecord():
     #student_gender attribute.
     @student_gender.setter
     def student_gender(self,value):
-        if (type(value)!=str):
-            raise GenderError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise GenderError("Value must be a string.")
         self.__student_gender=value
 
     #A getter accessor method to allow read-only access to the student_phone attribute from outside of the
@@ -261,8 +265,8 @@ class AttendanceRecord():
     #student_phone attribute.
     @student_phone.setter
     def student_phone(self,value):
-        if (type(value)!=str):
-            raise PhoneError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise PhoneError("Value must be a string.")
         self.__student_phone=value
 
     #A getter accessor method to allow read-only access to the student_comments attribute from outside of the
@@ -275,8 +279,8 @@ class AttendanceRecord():
     #student_comments attribute.
     @student_comments.setter
     def student_comments(self,value):
-        if (type(value)!=str):
-            raise CommentsError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise CommentsError("Value must be a string.")
         self.__student_comments=value
 
     #A getter accessor method to allow read-only access to the student_status attribute from outside of
@@ -289,8 +293,8 @@ class AttendanceRecord():
     #student_status attribute.
     @student_status.setter
     def student_status(self,value):
-        if (type(value)!=str):
-            raise StudentStatusError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise StudentStatusError("Value must be a string.")
         self.__student_status=value
 
     #A getter accessor method to allow read-only access to the attendance_count attribute from outside
@@ -303,10 +307,12 @@ class AttendanceRecord():
     #the attendance_count attribute.
     @attendance_count.setter
     def attendance_count(self,value):
-        if (value<0):
-            raise AttendanceCountError("Value must be a positive integer.")
-        elif (type(value)!=int):
-            raise AttendanceCountError("Value must be an integer.")
+    #    if (value==None):
+    #        raise AttendanceCountError("Value cannot be None")
+    #    elif (not isinstance(value,str)):
+    #        raise AttendanceCountError("Value cannot be string")
+    #    elif (len(value.strip())<=0):
+    #        raise AttendanceCountError("Value cannt be an empty string")
         self.__attendance_count=value
 
     #A getter accessor method to allow read-only access to the attendance_rate attribute from outside
@@ -319,10 +325,8 @@ class AttendanceRecord():
     #the attendance_rate attribute.
     @attendance_rate.setter
     def attendance_rate(self,value):
-        if (value<0):
-            raise AttendanceRateError("Value must be a positive integer.")
-        elif (type(value)!=int):
-            raise AttendanceRateError("Value must be an integer.")
+    #    if (type(value)!=str):
+    #        raise AttendanceRateError("Value must be a string.")
         self.__attendance_rate=value
 
     #A getter accessor method to allow read-only access to the teacher_id attribute from outside of the AttendanceRecord
@@ -335,24 +339,26 @@ class AttendanceRecord():
     #the teacher_id attribute.
     @teacher_id.setter
     def teacher_id(self,value):
-        if (value<0):
-            raise IdError("Value must be a positive integer.")
-        elif (type(value)!=int):
-            raise IdError("Value must be an integer.")
+    #    if (value==None):
+    #        raise IdError("Value cannot be None")
+    #    elif (not isinstance(value,str)):
+    #        raise IdError("Value cannot be string")
+    #    elif (len(value.strip())<=0):
+    #        raise IdError("Value cannt be an empty string")
         self.__teacher_id=value
 
     #A getter accessor method to allow read-only access to the teacher_title attribute from outside of the
     #AttendanceRecord class.
     @property
     def teacher_title(self):
-        return self.__title
+        return self.__teacher_title
 
     #A setter mutator method that will produce an error if a string data type is not passed to the
     #teacher_title attribute.
     @teacher_title.setter
     def teacher_title(self,value):
-        if (type(value)!=str):
-            raise TitleError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise TitleError("Value must be a string.")
         self.__teacher_title=value
 
     #A getter accessor method to allow read-only access to the teacher_first_name attribute from outside of the
@@ -365,8 +371,8 @@ class AttendanceRecord():
     #teacher_first_name attribute.
     @teacher_first_name.setter
     def teacher_first_name(self,value):
-        if (type(value)!=str):
-            raise FirstNameError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise FirstNameError("Value must be a string.")
         self.__teacher_first_name=value
 
     #A getter accessor method to allow read-only access to the teacher_last_name attribute from outside of the
@@ -379,8 +385,8 @@ class AttendanceRecord():
     #teacher_last_name attribute.
     @teacher_last_name.setter
     def teacher_last_name(self,value):
-        if (type(value)!=str):
-            raise LastNameError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise LastNameError("Value must be a string.")
         self.__teacher_last_name=value
 
     #A getter accessor method to allow read-only access to the teacher_phone attribute from outside of the
@@ -393,8 +399,8 @@ class AttendanceRecord():
     #teacher_phone attribute.
     @teacher_phone.setter
     def teacher_phone(self,value):
-        if (type(value)!=str):
-            raise PhoneError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise PhoneError("Value must be a string.")
         self.__teacher_phone=value
 
     #A getter accessor method to allow read-only access to the e_contact_id attribute from outside of the AttendanceRecord
@@ -406,11 +412,13 @@ class AttendanceRecord():
     #A setter mutator method that will produce an error if a negative value or a string is passed to
     #the e_contact_id attribute.
     @e_contact_id.setter
-    def e_contact(self,value):
-        if (value<0):
-            raise IdError("Value must be a positive integer.")
-        elif (type(value)!=int):
-            raise IdError("Value must be an integer.")
+    def e_contact_id(self,value):
+    #    if (value==None):
+    #        raise IdError("Value cannot be None")
+    #    elif (not isinstance(value,str)):
+    #        raise IdError("Value cannot be string")
+    #    elif (len(value.strip())<=0):
+    #        raise IdError("Value cannt be an empty string")
         self.__e_contact_id=value
 
     #A getter accessor method to allow read-only access to the e_contact_first_name attribute from outside of the
@@ -423,8 +431,8 @@ class AttendanceRecord():
     #e_contact_first_name attribute.
     @e_contact_first_name.setter
     def e_contact_first_name(self,value):
-        if (type(value)!=str):
-            raise FirstNameError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise FirstNameError("Value must be a string.")
         self.__e_contact_first_name=value
 
     #A getter accessor method to allow read-only access to the e_contact_last_name attribute from outside of the
@@ -437,8 +445,8 @@ class AttendanceRecord():
     #e_contact_last_name attribute.
     @e_contact_last_name.setter
     def e_contact_last_name(self,value):
-        if (type(value)!=str):
-            raise LastNameError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise LastNameError("Value must be a string.")
         self.__e_contact_last_name=value
 
     #A getter accessor method to allow read-only access to the e_contact_phone attribute from outside of the
@@ -451,8 +459,8 @@ class AttendanceRecord():
     #e_contact_phone attribute.
     @e_contact_phone.setter
     def e_contact_phone(self,value):
-        if (type(value)!=str):
-            raise PhoneError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise PhoneError("Value must be a string.")
         self.__e_contact_phone=value
 
     #A getter accessor method to allow read-only access to the e_contact_comments attribute from outside of the
@@ -465,8 +473,8 @@ class AttendanceRecord():
     #e_contact_comments attribute.
     @e_contact_comments.setter
     def e_contact_comments(self,value):
-        if (type(value)!=str):
-            raise CommentsError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise CommentsError("Value must be a string.")
         self.__e_contact_comments=value
 
     #A getter accessor method to allow read-only access to the e_contact_relationship attribute from outside of the
@@ -479,8 +487,8 @@ class AttendanceRecord():
     #e_contact_relationship attribute.
     @e_contact_relationship.setter
     def e_contact_relationship(self,value):
-        if (type(value)!=str):
-            raise RelationshipError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise RelationshipError("Value must be a string.")
         self.__e_contact_relationship=value
 
     #A getter accessor method to allow read-only access to the classroom_name attribute from outside of the
@@ -493,8 +501,8 @@ class AttendanceRecord():
     #classroom_name attribute.
     @classroom_name.setter
     def classroom_name(self,value):
-        if (type(value)!=str):
-            raise ClassroomNameError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise ClassroomNameError("Value must be a string.")
         self.__classroom_name=value
 
     #A getter accessor method to allow read-only access to the classroom_status attribute from outside of the
@@ -507,8 +515,8 @@ class AttendanceRecord():
     #classroom_status attribute.
     @classroom_status.setter
     def classroom_status(self,value):
-        if (type(value)!=str):
-            raise ClassroomStatusError("Value must be a string.")
+    #    if (type(value)!=str):
+    #        raise ClassroomStatusError("Value must be a string.")
         self.__classroom_status=value
 
     #A getter accessor method to allow read-only access to the classroom_date attribute from outside of the
@@ -517,12 +525,14 @@ class AttendanceRecord():
     def classroom_date(self):
         return self.__classroom_date
 
-    #A setter mutator method that will produce an error if a string data type is not passed to the
-    #classroom_date attribute.
+    #A setter mutator method that will produce an error if a the date is not passed to the
+    #classroom_date attribute in the correct format.
     @classroom_date.setter
     def classroom_date(self,value):
-        if (type(value)!=str):
-            raise ClassroomDateError("Value must be a string.")
+    #    try:
+    #        self.__classroom_date=datetime.datetime.strptime(value,"%Y-%m-%d")
+    #    except:
+    #        raise ClassroomDateError(value+" must be in the format YYYY-MM-DD")
         self.__classroom_date=value
 
     #A getter accessor method to allow read-only access to the classroom_day attribute from outside of the
@@ -535,17 +545,13 @@ class AttendanceRecord():
     #the classroom_day attribute.
     @classroom_day.setter
     def classroom_day(self,value):
-        if (value<0):
-            raise ClassroomDayError("Value must be a positive integer.")
-        elif (type(value)!=int):
-            raise ClassroomDayError("Value must be an integer.")
+    #    if (value==None):
+    #        raise ClassroomDayError("Value cannot be None")
+    #    elif (not isinstance(value,str)):
+    #        raise ClassroomDayError("Value cannot be string")
+    #    elif (len(value.strip())<=0):
+    #        raise ClassroomDayError("Value cannt be an empty string")
         self.__classroom_day=value
-
-    def display_classroom_summary(self):
-        pass
-
-    def display_student_summary(self):
-        pass
 
 #A class that runs the roll marker program backend module methods. Using the name RollMarkerManager as
 #it captures the escence of the core purpose of the program.
@@ -560,26 +566,27 @@ class RollMarkerManager():
     def add_attendance_record(self,student_id,student_first_name,student_last_name,student_gender,student_phone,student_comments,student_status,attendance_count,attendance_rate,teacher_id,teacher_title,teacher_first_name,teacher_last_name,teacher_phone,e_contact_id,e_contact_first_name,e_contact_last_name,e_contact_phone,e_contact_comments,e_contact_relationship,classroom_name,classroom_status,classroom_date,classroom_day):
         #A variable to store the the data passed to the method by the arguments. Using the name new_record
         #as it represents new attendance record that will be appended to an exisiting list of records.
-        new_record = AttendanceRecord(student_id,student_first_name,student_last_name,student_gender,student_phone,student_comments,student_status,attendance_count,attendance_rate,teacher_id,teacher_title,teacher_first_name,teacher_last_name,teacher_phone,e_contact_id,e_contact_first_name,e_contact_last_name,e_contact_phone,e_contact_comments,e_contact_relationship,classroom_name,classroom_status,classroom_date,classroom_day)
+        new_record=None
+        new_record=AttendanceRecord(student_id,student_first_name,student_last_name,student_gender,student_phone,student_comments,student_status,attendance_count,attendance_rate,teacher_id,teacher_title,teacher_first_name,teacher_last_name,teacher_phone,e_contact_id,e_contact_first_name,e_contact_last_name,e_contact_phone,e_contact_comments,e_contact_relationship,classroom_name,classroom_status,classroom_date,classroom_day)
         self.attendance_records.append(new_record)
 
     #A method that accepts an argument of a partial classroom name to search the attendance_records list for.
     #matching classroom names. The method than yeilds the results of that search.
     def get_matching_classroom(self,classroom_name_partial):
         #A variable to store a partical classroom name that can be used to search the attendance_record list.
-        classroom_name_partial = classroom_name_partial.lower()
+        classroom_name_partial=classroom_name_partial.lower()
         for c in self.attendance_records:
-            if classroom_name_partial in p.classroom_name.lower():
-                yield r
+            if classroom_name_partial in c.classroom_name.lower():
+                yield c
 
     #A method that accepts an argument of a partial student name to search the attendance_records list for.
     #matching student names. The method than yeilds the results of that search.
     def get_matching_student(self,student_name_partial):
         #A variable to store a partical student name that can be used to search the attendance_record list.
-        student_name_partial = student_name_partial.lower()
+        student_name_partial=student_name_partial.lower()
         for s in self.attendance_records:
-            if student_name_partial in p.student_first_name.lower():
-                yield r
+            if student_name_partial in s.student_first_name.lower():
+                yield s
 
     #A method that can be called from the frontend module that accepts the argument file_name and reads data from
     #the external data file given to it by the variable file_name. Using the name load_from_file as it is a
@@ -588,31 +595,28 @@ class RollMarkerManager():
         #A variable that is being assigned the function of opening and closing an external file in order to read
         #data to the external file. Using the name file_object as it is a good descriptor of the file object.
         file_object=open(file_name,"r")
-        #A variable to index the lines of data in the opportunities list starting at 0. This will be used in a
-        #while loop to ensure that whilst the index is less than the number of opportunities in the list, the loop
-        #will display a summary of that line of data. Using the name i as it is a good descriptor of what
-        #it is being used for, to index the list of opportunities.
-        i=0
         #A variable to store the data that is being read from each line of the external file. Using the name
         #line as it is a good descriptor of what is being captured, a line of data from the external file.
         line=file_object.readline()
+
+        line=file_object.readline()
         while(line!=""):
-            fields=line.split(",")
-            student_id=int(fields[0])
+            fields=line.strip().split(",")
+            student_id=fields[0]
             student_first_name=fields[1]
             student_last_name=fields[2]
             student_gender=fields[3]
             student_phone=fields[4]
             student_comments=fields[5]
             student_status=fields[6]
-            attendance_count=int(fields[7])
-            attendance_rate=float(fields[8])
-            teacher_id=int(fields[9])
+            attendance_count=fields[7]
+            attendance_rate=fields[8]
+            teacher_id=fields[9]
             teacher_title=fields[10]
             teacher_first_name=fields[11]
             teacher_last_name=fields[12]
             teacher_phone=fields[13]
-            e_contact_id=int(fields[14])
+            e_contact_id=fields[14]
             e_contact_first_name=fields[15]
             e_contact_last_name=fields[16]
             e_contact_phone=fields[17]
@@ -621,23 +625,54 @@ class RollMarkerManager():
             classroom_name=fields[20]
             classroom_status=fields[21]
             classroom_date=fields[22]
-            classroom_day=int(fields[23])
+            classroom_day=fields[23]
             self.add_attendance_record(student_id,student_first_name,student_last_name,student_gender,student_phone,student_comments,student_status,attendance_count,attendance_rate,teacher_id,teacher_title,teacher_first_name,teacher_last_name,teacher_phone,e_contact_id,e_contact_first_name,e_contact_last_name,e_contact_phone,e_contact_comments,e_contact_relationship,classroom_name,classroom_status,classroom_date,classroom_day)
             line=file_object.readline()
-            i+=1
         file_object.close()
-        return i
 
     #A method that that can be called from the frontend module that accepts the argument file_name and writes
     #data to the external data file given to it by the variable file_name. Using the name save_data as it is
     #a suiable verb followed by a description of what the function is doing, saving data to a file.
     def save_data(self,file_name):
+        #A variable to capture the length of the attendance_records lists to use in a while loop. Using the name
+        #num_records as it is a good descriptor of what the variable is being used for.
+        num_records=len(self.attendance_records)
         #A variable to capture a summary of data that can be written to an external file. Using
         #the name summary as it is providing a summary of the data that can be written to file.
-        summary = "Student ID,Student First Name,Student Last Name,Student Gender,Student Phone,Student Comments,Student Status,Attendance Count,Attendance Rate	,Teacher ID,Teacher Title,Teacher First Name,Teacher Last Name,Teacher Phone,E Contact ID,E Contact First Name,E Contact Last Name,E Contact Phone,E Contact Comments,E Contact Relationship,Classroom Name,Classroom Status,Classroom Date,Classroom Day\n"
+        summary="Student ID,Student First Name,Student Last Name,Student Gender,Student Phone,Student Comments,Student Status,Attendance Count,Attendance Rate,Teacher ID,Teacher Title,Teacher First Name,Teacher Last Name,Teacher Phone,E Contact ID,E Contact First Name,E Contact Last Name,E Contact Phone,E Contact Comments,E Contact Relationship,Classroom Name,Classroom Status,Classroom Date,Classroom Day\n"
+        #A variable to index the lines of data in the opportunities list starting at 0. This will be used in a
+        #while loop to ensure that whilst the index is less than the number of opportunities in the list, the loop
+        #will display a summary of that line of data. Using the name i as it is a good descriptor of what
+        #it is being used for, to index the list of opportunities.
+        i=0
+        while(i<num_records):
+            summary+=str(self.attendance_records[i].student_id)
+            summary+=","+str(self.attendance_records[i].student_first_name)
+            summary+=","+str(self.attendance_records[i].student_last_name)
+            summary+=","+str(self.attendance_records[i].student_gender)
+            summary+=","+str(self.attendance_records[i].student_phone)
+            summary+=","+str(self.attendance_records[i].student_comments)
+            summary+=","+str(self.attendance_records[i].student_status)
+            summary+=","+str(self.attendance_records[i].attendance_count)
+            summary+=","+str(self.attendance_records[i].attendance_rate)
+            summary+=","+str(self.attendance_records[i].teacher_id)
+            summary+=","+str(self.attendance_records[i].teacher_title)
+            summary+=","+str(self.attendance_records[i].teacher_first_name)
+            summary+=","+str(self.attendance_records[i].teacher_last_name)
+            summary+=","+str(self.attendance_records[i].teacher_phone)
+            summary+=","+str(self.attendance_records[i].e_contact_id)
+            summary+=","+str(self.attendance_records[i].e_contact_first_name)
+            summary+=","+str(self.attendance_records[i].e_contact_last_name)
+            summary+=","+str(self.attendance_records[i].e_contact_phone)
+            summary+=","+str(self.attendance_records[i].e_contact_comments)
+            summary+=","+str(self.attendance_records[i].e_contact_relationship)
+            summary+=","+str(self.attendance_records[i].classroom_name)
+            summary+=","+str(self.attendance_records[i].classroom_status)
+            summary+=","+str(self.attendance_records[i].classroom_date)
+            summary+=","+str(self.attendance_records[i].classroom_day)+"\n"
+            i+=1
         #A variable that is being assigned the function of opening and closing an external file in order to write
         #data to the external file. Using the name file_object as it is a good descriptor of the file object.
-        file_object = open(file_name,"w")
+        file_object=open(file_name,"w")
         file_object.write(summary)
-        file_object.write(str(self)+"\n")
         file_object.close()
