@@ -1,5 +1,6 @@
 import sys
 import datetime
+
 #A child class of the python standard Exception class that will parent exception classes for each
 #attribute of the AttendanceRecord class. Using the name AttendanceRecord as each exception will be
 #related to attributes in the AttendanceRecord class and it is good practice to use Error as the final
@@ -555,10 +556,11 @@ class AttendanceRecord():
 
 #A class that runs the roll marker program backend module methods. Using the name RollMarkerManager as
 #it captures the escence of the core purpose of the program.
-class RollMarkerManager():
-    #A variable to store a list of data. Using the name attendance_records as it is a good descriptor of
-    #the data being stored.
-    attendance_records=[]
+class RollMarkerManager:
+    def __init__(self):
+        #A variable to store a list of data. Using the name attendance_records as it is a good descriptor of
+        #the data being stored.
+        self.attendance_records=[]
 
     #A method that accepts several arguments to append newly entered records to the attendance_records list.
     #Using the name add_attendance_record as it is a suitable verb followed by the description of the method of
