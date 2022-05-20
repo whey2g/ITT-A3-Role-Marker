@@ -1,15 +1,12 @@
 import sys
-import datetime
 import roll_marker_backend
 
 #A class that runs the roll marker program, writing and displaying menus, calling and
 #accepting user input. Using the name RollMarkerUI as RollMarker captures the escence of the core
 #purpose of the program, UI stands for User Interface which is the role of this class.
-class RollMarkerUI():
-    #A variable that is being assigned the class RollMarkerManager from the backend module to reduce code
-    #throughout the program. Using the name roll_marker as it calling a roll_marker (manager) class
-    #from the backend module.
-    roll_marker = roll_marker_backend.RollMarkerManager()
+class RollMarkerUI:
+    def __init__(self):
+        self.roll_marker = roll_marker_backend.RollMarkerManager()
 
     def run_roll_marker(self):
         #A variable that takes the file name passed to it by the constructor method. using the name
